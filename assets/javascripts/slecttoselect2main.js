@@ -37,12 +37,14 @@ function replaceAllSelect2(){
 
     for (i = 0; i < elements.length; i++) {
 
+		let _istasket = $.type(new String(elements[i].id).match(/available_settings_issue.*|selected_settings_issue.*/g)) == "array";
+		
         // For not woroking 「width:resolve」
         if(elements[i].id == 'year'
         || elements[i].id == 'month'
         || elements[i].id == 'columns'
         || elements[i].id == 'settings_issuequery_query_id'
-        || elements[i].id == 'block-select'){
+		){
 
             $("#" + elements[i].id).select2({
                 width:"175px",
@@ -50,7 +52,10 @@ function replaceAllSelect2(){
                 allowClear: true
             });
         }
-        else if (elements[i].id == 'available_c' || elements[i].id == 'selected_c') {
+        else if (elements[i].id == 'available_c' 
+		|| elements[i].id == 'selected_c'
+		|| elements[i].id == 'block-select'
+		|| _istasket) {
             //do nothing, fix incorrect display
         } else {
             // For All Pages
